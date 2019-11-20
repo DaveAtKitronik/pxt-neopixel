@@ -1,6 +1,6 @@
 {
     "name": "neopixel",
-    "version": "0.6.12",
+    "version": "0.6.13",
     "description": "WS2182B Driver",
     "license": "MIT",
     "dependencies": {
