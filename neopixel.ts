@@ -239,7 +239,7 @@ namespace neopixel {
         //% weight=79
         //% parts="neopixel"
         show() {
-            ws2812b.sendBuffer(this.buf, this.pin);
+            ws2812b.sendBuffer(this.buf, this.pin, this.brightness);
         }
 
         /**
@@ -271,6 +271,14 @@ namespace neopixel {
         //% weight=59
         //% parts="neopixel" advanced=true
         setBrightness(brightness: number): void {
+            if(brightness <0){
+                brightness = 0
+            }
+            else if (brightness >255)
+            {
+                brightness = 255
+            }
+                
             this.brightness = brightness & 0xff;
         }
 
