@@ -406,12 +406,6 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            const br = this.brightness;
-            if (br < 255) {
-                red = (red * br) >> 8;
-                green = (green * br) >> 8;
-                blue = (blue * br) >> 8;
-            }
             const end = this.start + this._length;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             for (let i = this.start; i < end; ++i) {
@@ -422,10 +416,6 @@ namespace neopixel {
             if (this._mode !== NeoPixelMode.RGBW)
                 return;
 
-            let br = this.brightness;
-            if (br < 255) {
-                white = (white * br) >> 8;
-            }
             let buf = this.buf;
             let end = this.start + this._length;
             for (let i = this.start; i < end; ++i) {
@@ -445,12 +435,6 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            let br = this.brightness;
-            if (br < 255) {
-                red = (red * br) >> 8;
-                green = (green * br) >> 8;
-                blue = (blue * br) >> 8;
-            }
             this.setBufferRGB(pixeloffset, red, green, blue)
         }
         private setPixelW(pixeloffset: number, white: number): void {
@@ -463,10 +447,6 @@ namespace neopixel {
 
             pixeloffset = (pixeloffset + this.start) * 4;
 
-            let br = this.brightness;
-            if (br < 255) {
-                white = (white * br) >> 8;
-            }
             let buf = this.buf;
             buf[pixeloffset + 3] = white;
         }
